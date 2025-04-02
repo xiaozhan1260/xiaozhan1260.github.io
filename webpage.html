@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .selection-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .selection-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .option-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+        }
+        
+        .option-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+        
+        .option-item.selected {
+            background-color: #f0f4ff;
+            border-color: #667eea;
+        }
+        
+        .option-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #eef2ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 18px;
+            color: #667eea;
+        }
+        
+        .option-text {
+            flex-grow: 1;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .option-count {
+            background-color: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="selection-container">
+        <h2 class="selection-title">Select an Option</h2>
+        
+        <div class="option-list">
+            <div class="option-item">
+                <div class="option-icon">👤</div>
+                <div class="option-text">Accounts</div>
+                <div class="option-count">0/10</div>
+            </div>
+            
+            <div class="option-item">
+                <div class="option-icon">📱</div>
+                <div class="option-text">Phone Numbers</div>
+            </div>
+            
+            <div class="option-item">
+                <div class="option-icon">✉️</div>
+                <div class="option-text">Messages</div>
+                <div class="option-count">3</div>
+            </div>
+            
+            <div class="option-item">
+                <div class="option-icon">💬</div>
+                <div class="option-text">Messenger</div>
+                <div class="option-count">2</div>
+            </div>
+            
+            <div class="option-item">
+                <div class="option-icon">🔔</div>
+                <div class="option-text">Notifications</div>
+                <div class="option-count">5</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple selection functionality
+        document.querySelectorAll('.option-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.option-item').forEach(i => {
+                    i.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
